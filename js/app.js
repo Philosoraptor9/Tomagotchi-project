@@ -1,18 +1,7 @@
 
 let seconds = 0;
-
-const timePassing = setInterval(() => {
-    seconds++;
-    if (seconds % 5 === 0){
-        console.log("Every 5 seconds something happens!")
-    }
-    if(seconds > 10){
-        clearInterval(timePassing);
-        console.log("Done!");
-        return;
-    }
-    console.log("Time is passing")
-}, 500)
+let timer;
+let pet;
 
 class Tomagotchi {
     constructor(name, eyeColor){
@@ -31,7 +20,7 @@ class Tomagotchi {
 
 const startGame = () => {
     const nameIt = prompt("Name your Tomagotchi to begin!");
-    const pet = new Tomagotchi(nameIt, 'color');
+    pet = new Tomagotchi(nameIt, 'color');
     $('#start').remove();
     console.log(pet)
 }
@@ -56,10 +45,39 @@ const generateButtons = () => {
     $button3.text('turn off the lights')
 }
 
+const startTimer = () => {
+    timer = setInterval(() => {
+        seconds++;
+        if (seconds % 5 === 0){
+            pet.age++;
+            console.log(pet.age)
+        }
+        if (seconds % 5 === 0){
+            pet.hunger++;
+            console.log(pet.hunger)
+        }
+        if (seconds % 5 === 0){
+            pet.boredom++;
+            console.log(pet.boredom)
+        }
+        if (seconds % 5 === 0){
+            pet.sleepiness++;
+            console.log(pet.sleepiness)
+        }
+        if(seconds > 30){
+            clearInterval(timer);
+            console.log("Done!");
+            return;
+        }
+        console.log("Time is passing")
+    }, 1000)
+}
+
 
 $('#start').on('click', startGame);
 $('#start').on('click', showTomagotchi);
 $('#start').on('click', generateButtons);
+$('#start').on('click', startTimer)
 
 
 
