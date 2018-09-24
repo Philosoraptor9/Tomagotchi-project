@@ -13,10 +13,21 @@ const timePassing = setInterval(() => {
     console.log("Time is passing")
 }, 500)
 
+class Tomagotchi {
+    constructor(name, eyeColor){
+        this.legs = 4;
+        this.name = name;
+        this.eyeColor = eyeColor
+    }
+    greet (){
+        console.log('Hi Person!')
+    }
+}
+
+const goku = new Tomagotchi('goku', 'green');
 
 // Requirements
 
-// Create a repo for your tomagotchi pet
 // make a commit after you finish each one of the following
 // Create a Class (JS Class, look at your notes if your forget) for your tomagotchi
 // Instatiate your Tomagotchi
