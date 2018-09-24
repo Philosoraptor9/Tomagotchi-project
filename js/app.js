@@ -29,15 +29,38 @@ class Tomagotchi {
     }
 }
 
-const startGame = () =>{
-    // const $button = $('<button/>')
+const startGame = () => {
     const nameIt = prompt("Name your Tomagotchi to begin!");
-    const pet = new Tomagotchi(nameIt, 'color')
-    $('#start').remove()
+    const pet = new Tomagotchi(nameIt, 'color');
+    $('#start').remove();
     console.log(pet)
 }
 
-$('#start').on('click', startGame)
+const showTomagotchi = () => {
+    const $section = $('<section/>').addClass('gameImage');
+    $('body').append($section);
+    $section.append('<img src = "images/Agum.png">')
+}
+
+const generateButtons = () => {
+    const $div = $('<div/>').addClass('controls');
+    const $button1 = $('<button/>');
+    const $button2 = $('<button/>')
+    const $button3 = $('<button/>')
+    $('body').append($div);
+    $div.append($button1);
+    $button1.text('feed your pet');
+    $div.append($button2);
+    $button2.text('play with your pet')
+    $div.append($button3);
+    $button3.text('turn off the lights')
+}
+
+
+$('#start').on('click', startGame);
+$('#start').on('click', showTomagotchi);
+$('#start').on('click', generateButtons);
+
 
 
 
