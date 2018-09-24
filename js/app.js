@@ -16,6 +16,10 @@ const timePassing = setInterval(() => {
 class Tomagotchi {
     constructor(name, eyeColor){
         this.legs = 4;
+        this.age = 0;
+        this.hunger = 0;
+        this.sleepiness = 0;
+        this.boredom = 0;
         this.name = name;
         this.eyeColor = eyeColor
     }
@@ -26,25 +30,32 @@ class Tomagotchi {
 
 const goku = new Tomagotchi('goku', 'green');
 
-// Requirements
 
-// make a commit after you finish each one of the following
-// Create a Class (JS Class, look at your notes if your forget) for your tomagotchi
-// Instatiate your Tomagotchi
-// Display a character of your choice on the screen to represent your pet
-// Display the following metrics for your pet:
-// Hunger (1-10 scale)
-// Sleepiness (1-10 scale)
-// Boredom (1-10 scale)
-// Age
-// Add buttons to the screen to feed your pet, turn off the lights, and play with your pet.
-// Add the ability to name your pet.
-// Style the page.
-// Increase your pet's age every x minutes
-// Increase your pet's Hunger, Sleepiness, and Bored metrics on an interval of your choosing.
-// You pet should die if Hunger, Boredom, or Sleepiness hits 10.
-// Morph your pet at certain ages.
-// Animate your pet across the screen while it's alive.
+
+// Onclick - Start game button disappears
+    // Instantiate Tomagotchi, prompt user to name
+    // Display image of Tomagotchi, age 0
+    // Generate hunger, sleepiness, boredom indicators starting at 0 (T dies when hunger, sleepiness, or boredom reach 10)
+    // Generate 'Feed,' 'Turn off the Light', 'Play with your pet' buttons
+    // Start timer to increase each of above + age
+    // Start animation for pet to move 
+
+// Once age reaches certain interval, evolve
+    // image changes
+    // hunger, sleepiness, and boredom reset to 0
+
+// Onclick 'Feed'
+    // Hunger goes down by 1(?)
+
+// Onclick 'Turn off light'
+    // Sleepiness goes down by 1 at interval
+
+// Onclick 'Play with your pet'
+    // boredom goes down by 2 each click
+
+// Boredom/hunger/sleepiness reach 10; Tomagotchi dies
+    // display message 'Your tomagotchi died of boredom/hunger/sleepiness'
+    // reset to start game screen
 
 // Extras
 
