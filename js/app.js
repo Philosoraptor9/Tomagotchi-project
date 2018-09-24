@@ -1,5 +1,6 @@
-console.log('online')
+
 let seconds = 0;
+
 const timePassing = setInterval(() => {
     seconds++;
     if (seconds % 5 === 0){
@@ -28,7 +29,15 @@ class Tomagotchi {
     }
 }
 
-const goku = new Tomagotchi('goku', 'green');
+const startGame = () =>{
+    // const $button = $('<button/>')
+    const nameIt = prompt("Name your Tomagotchi to begin!");
+    const pet = new Tomagotchi(nameIt, 'color')
+    $('#start').remove()
+    console.log(pet)
+}
+
+$('#start').on('click', startGame)
 
 
 
