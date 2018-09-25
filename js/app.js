@@ -3,6 +3,10 @@ let seconds = 0;
 let timer;
 let pet;
 
+const gameReset = () =>{
+    window.location.reload(true);
+}
+
 class Tomagotchi {
     constructor(name, eyeColor){
         this.legs = 4;
@@ -83,46 +87,42 @@ const startTimer = () => {
             console.log(pet.sleepiness)
         }
         if (pet.hunger === 10){
-            pet.alive === false;
+            pet.alive = false;
             console.log(`${pet.name} has died of starvation! Game over.`)
             clearInterval(timer);
             return;
         }
-        if (pet.sleepiness === 10){
-            pet.alive === false;
+        else if (pet.sleepiness === 10){
+            pet.alive = false;
             console.log(`${pet.name} has died of fatigue! Game over.`)
             clearInterval(timer);
             return;
         } 
-        if (pet.boredom === 10){
-            pet.alive === false;
+       else if (pet.boredom === 10){
+            pet.alive = false;
             console.log(`${pet.name} has died of boredom! Game over.`)
             clearInterval(timer);
             return;
         }
-        if(seconds > 60){
+       else if (seconds === 30 && pet.alive === true){
+            console.log(`${pet.name} has evolved!!!`)
+        }
+       else if(seconds > 60){
             clearInterval(timer);
             console.log(`${pet.name} lived a long happy life before dying of natural causes!
              Congrats, you're a Tomagotchi champion. Game over.`);
             return;
         }
-        console.log("Time is passing")
+        console.log(`${seconds} seconds have passed`)
     }, 1000)
 }
 
-const evolve = () => {
-    if(seconds > 30 && pet.alive === true){
-        console.log(`${pet.name} has evolved!!!`)
-    }
-}
 
 $('.start').on('click', startGame);
 $('.start').on('click', showTomagotchi);
 $('.start').on('click', generateButtons);
 $('.start').on('click', startTimer);
 $('.start').on('click', createScoreboard);
-$('.start').on('click', evolve);
-
 
 $(document).on('click', '.feed', function(){
     pet.hunger--;
@@ -144,7 +144,6 @@ $(document).on('click', '.sleep', function(){
 
 
 //Remaining objectives
-    // evolve after a certain amount of time
     // reset game if tomagotchi dies
     // animate tomagotchi
 
