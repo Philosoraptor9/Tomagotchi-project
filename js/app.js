@@ -22,7 +22,7 @@ class Tomagotchi {
 const startGame = () => {
     const nameIt = prompt("Name your Tomagotchi to begin!");
     pet = new Tomagotchi(nameIt, 'color');
-    $('#start').remove();
+    $('.start').remove();
     console.log(pet)
 }
 
@@ -34,9 +34,9 @@ const showTomagotchi = () => {
 
 const generateButtons = () => {
     const $div = $('<div/>').addClass('controls');
-    const $button1 = $('<button id = feed/>');
-    const $button2 = $('<button id = play/>');
-    const $button3 = $('<button id = sleep/>');
+    const $button1 = $('<button class = feed/>');
+    const $button2 = $('<button class = play/>');
+    const $button3 = $('<button class = sleep/>');
 
     $('body').append($div);
 
@@ -49,26 +49,14 @@ const generateButtons = () => {
 }
 
 const createScoreboard = () => {
-    const $aside = $('<aside/>');
-    const $div1 = $('<div id = ageScore/>').addClass('score');
-    const $div2 = $('<div id = appetiteScore/>').addClass('score');
-    const $div3 = $('<div id = attentionScore/>').addClass('score');
-    const $div4 = $('<div id = tirednessScore/>').addClass('score');
-
     const $aging = pet.age;
     const $hungerScore = pet.hunger;
     const $boredomScore = pet.boredom;
     const $fatigueScore = pet.sleepiness;
-    
-    $('body').append($aside);
-    $('aside').append($div1);
-    $div1.append($aging);
-    $('aside').append($div2);
-    $div2.append($hungerScore);
-    $('aside').append($div3);
-    $div3.append($boredomScore);
-    $('aside').append($div4);
-    $div4.append($fatigueScore);
+    $('.ageScore').append($aging);
+    $('.appetiteScore').append($hungerScore);
+    $('.attentionScore').append($boredomScore);
+    $('.tirednessScore').append($fatigueScore);
 }
 
 const startTimer = () => {
@@ -76,25 +64,25 @@ const startTimer = () => {
         seconds++;
         if (seconds % 5 === 0){
             pet.age++;
-            $('#ageScore').html(pet.age);
+            $('.ageScore').text(pet.age);
             console.log(pet.age);
         }
         if (seconds % 5 === 0){
             pet.hunger++;
-            $('#appetiteScore').html(pet.hunger);
+            $('.appetiteScore').text(pet.hunger);
             console.log(pet.hunger)
         }
         if (seconds % 5 === 0){
             pet.boredom++;
-            $('#attentionScore').html(pet.boredom);
+            $('.attentionScore').text(pet.boredom);
             console.log(pet.boredom)
         }
         if (seconds % 5 === 0){
             pet.sleepiness++;
-            $('#tirednessScore').html(pet.sleepiness);
+            $('.tirednessScore').text(pet.sleepiness);
             console.log(pet.sleepiness)
         }
-        if(seconds > 30){
+        if(seconds > 50){
             clearInterval(timer);
             console.log("Done!");
             return;
@@ -103,28 +91,41 @@ const startTimer = () => {
     }, 1000)
 }
 
-const feedTomagotchi = () => {
+// const feedTomagotchi = () => {
+  
+// }
+
+// const playWithTomagotchi = () => {
+//     pet.boredom--;
+// }
+
+// const sleepTomagotchi = () => {
+//     pet.sleepiness--;
+// }
+
+$('.start').on('click', startGame);
+$('.start').on('click', showTomagotchi);
+$('.start').on('click', generateButtons);
+$('.start').on('click', startTimer);
+$('.start').on('click', createScoreboard);
+
+$(document).on('click', '.feed', function(){
     pet.hunger--;
+    $('.appetiteScore').text(pet.hunger);
     console.log(pet.hunger);
-}
+});
 
-const playWithTomagotchi = () => {
+$(document).on('click', '.play', function(){
     pet.boredom--;
-}
+    $('.attentionScore').text(pet.boredom);
+    console.log(pet.boredom);
+});
 
-const sleepTomagotchi = () => {
+$(document).on('click', '.sleep', function(){
     pet.sleepiness--;
-}
-
-$('#start').on('click', startGame);
-$('#start').on('click', showTomagotchi);
-$('#start').on('click', generateButtons);
-$('#start').on('click', startTimer);
-$('#start').on('click', createScoreboard);
-
-$('#feed').on('click', feedTomagotchi);
-$('#play').on('click', playWithTomagotchi);
-$('#sleep').on('click', sleepTomagotchi);
+    $('.tirednessnScore').text(pet.sleepiness);
+    console.log(pet.sleepiness);
+});
 
 
 // Onclick - Start game button disappears
