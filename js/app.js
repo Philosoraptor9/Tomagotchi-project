@@ -34,9 +34,9 @@ const showTomagotchi = () => {
 
 const generateButtons = () => {
     const $div = $('<div/>').addClass('controls');
-    const $button1 = $('<button/>');
-    const $button2 = $('<button/>');
-    const $button3 = $('<button/>');
+    const $button1 = $('<button id = feed/>');
+    const $button2 = $('<button id = play/>');
+    const $button3 = $('<button id = sleep/>');
 
     $('body').append($div);
 
@@ -103,14 +103,15 @@ const startTimer = () => {
     }, 1000)
 }
 
-
-
 $('#start').on('click', startGame);
 $('#start').on('click', showTomagotchi);
 $('#start').on('click', generateButtons);
 $('#start').on('click', startTimer);
 $('#start').on('click', createScoreboard);
 
+$('#feed').on('click', pet.hunger--);
+$('#play').on('click', pet.boredom--);
+$('#sleep').on('click', pet.sleepiness--)
 
 
 // Onclick - Start game button disappears
