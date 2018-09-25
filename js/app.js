@@ -76,22 +76,22 @@ const startTimer = () => {
         seconds++;
         if (seconds % 5 === 0){
             pet.age++;
-            $('#ageScore').append(pet.age);
+            $('#ageScore').html(pet.age);
             console.log(pet.age);
         }
         if (seconds % 5 === 0){
             pet.hunger++;
-            $('#appetiteScore').append(pet.hunger);
+            $('#appetiteScore').html(pet.hunger);
             console.log(pet.hunger)
         }
         if (seconds % 5 === 0){
             pet.boredom++;
-            $('#attentionScore').append(pet.boredom);
+            $('#attentionScore').html(pet.boredom);
             console.log(pet.boredom)
         }
         if (seconds % 5 === 0){
             pet.sleepiness++;
-            $('#tirednessScore').append(pet.sleepiness);
+            $('#tirednessScore').html(pet.sleepiness);
             console.log(pet.sleepiness)
         }
         if(seconds > 30){
@@ -103,15 +103,28 @@ const startTimer = () => {
     }, 1000)
 }
 
+const feedTomagotchi = () => {
+    pet.hunger--;
+    console.log(pet.hunger);
+}
+
+const playWithTomagotchi = () => {
+    pet.boredom--;
+}
+
+const sleepTomagotchi = () => {
+    pet.sleepiness--;
+}
+
 $('#start').on('click', startGame);
 $('#start').on('click', showTomagotchi);
 $('#start').on('click', generateButtons);
 $('#start').on('click', startTimer);
 $('#start').on('click', createScoreboard);
 
-$('#feed').on('click', pet.hunger--);
-$('#play').on('click', pet.boredom--);
-$('#sleep').on('click', pet.sleepiness--)
+$('#feed').on('click', feedTomagotchi);
+$('#play').on('click', playWithTomagotchi);
+$('#sleep').on('click', sleepTomagotchi);
 
 
 // Onclick - Start game button disappears
