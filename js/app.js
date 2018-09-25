@@ -3,6 +3,7 @@ let seconds = 0;
 let timer;
 let pet;
 
+
 class Tomagotchi {
     constructor(name, eyeColor){
         this.legs = 4;
@@ -34,15 +35,37 @@ const showTomagotchi = () => {
 const generateButtons = () => {
     const $div = $('<div/>').addClass('controls');
     const $button1 = $('<button/>');
-    const $button2 = $('<button/>')
-    const $button3 = $('<button/>')
+    const $button2 = $('<button/>');
+    const $button3 = $('<button/>');
     $('body').append($div);
     $div.append($button1);
     $button1.text('feed your pet');
     $div.append($button2);
-    $button2.text('play with your pet')
+    $button2.text('play with your pet');
     $div.append($button3);
     $button3.text('turn off the lights')
+}
+
+const scoreboard = () => {
+    const $aside = $('<aside/>');
+    const $div1 = $('<div/>').addClass('score');
+    const $div2 = $('<div/>').addClass('score');
+    const $div3 = $('<div/>').addClass('score');
+    const $div4 = $('<div/>').addClass('score');
+    const $aging = pet.age;
+    const $hungerScore = pet.hunger;
+    const $boredomScore = pet.boredom;
+    const $fatigueScore = pet.sleepiness;
+    
+    $('body').append($aside);
+    $('aside').append($div1);
+    $div1.append($aging);
+    $('aside').append($div2);
+    $div1.append($hungerScore);
+    $('aside').append($div3);
+    $div1.append($boredomScore);
+    $('aside').append($div4);
+    $div1.append($fatigueScore);
 }
 
 const startTimer = () => {
@@ -77,17 +100,14 @@ const startTimer = () => {
 $('#start').on('click', startGame);
 $('#start').on('click', showTomagotchi);
 $('#start').on('click', generateButtons);
-$('#start').on('click', startTimer)
-
+$('#start').on('click', startTimer);
+$('#start').on('click', scoreboard);
 
 
 
 // Onclick - Start game button disappears
     // Instantiate Tomagotchi, prompt user to name
-    // Display image of Tomagotchi, age 0
-    // Generate hunger, sleepiness, boredom indicators starting at 0 (T dies when hunger, sleepiness, or boredom reach 10)
-    // Generate 'Feed,' 'Turn off the Light', 'Play with your pet' buttons
-    // Start timer to increase each of above + age
+    // Display scoreboard - age, hunger, boredom, sleepiness
     // Start animation for pet to move 
 
 // Once age reaches certain interval, evolve
