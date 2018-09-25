@@ -29,6 +29,7 @@ const startGame = () => {
     const nameIt = prompt("Name your Tomagotchi to begin!");
     pet = new Tomagotchi(nameIt, 'color');
     $('.start').remove();
+    $('.name').append(pet.name)
     console.log(pet)
 }
 
@@ -59,10 +60,10 @@ const createScoreboard = () => {
     const $hungerScore = pet.hunger;
     const $boredomScore = pet.boredom;
     const $fatigueScore = pet.sleepiness;
-    $('.ageScore').append($aging);
-    $('.appetiteScore').append($hungerScore);
-    $('.attentionScore').append($boredomScore);
-    $('.tirednessScore').append($fatigueScore);
+    $('.ageScore').append('Age: ' + $aging);
+    $('.appetiteScore').append('Appetite: ' + $hungerScore);
+    $('.attentionScore').append('Focus: ' + $boredomScore);
+    $('.tirednessScore').append('Fatigue: ' + $fatigueScore);
 }
 
 const startTimer = () => {
@@ -70,49 +71,49 @@ const startTimer = () => {
         seconds++;
         if (seconds % 10 === 0){
             pet.age++;
-            $('.ageScore').text(pet.age);
+            $('.ageScore').text('Age: ' + pet.age);
             console.log(pet.age);
         }
         if (seconds % 3 === 0){
             pet.hunger++;
-            $('.appetiteScore').text(pet.hunger);
+            $('.appetiteScore').text('Appetite: ' + pet.hunger);
             console.log(pet.hunger)
         }
         if (seconds % 4 === 0){
             pet.boredom++;
-            $('.attentionScore').text(pet.boredom);
+            $('.attentionScore').text('Focus: ' + pet.boredom);
             console.log(pet.boredom)
         }
         if (seconds % 5 === 0){
             pet.sleepiness++;
-            $('.tirednessScore').text(pet.sleepiness);
+            $('.tirednessScore').text('Fatigue: ' + pet.sleepiness);
             console.log(pet.sleepiness)
         }
         if (pet.hunger === 10){
             pet.alive = false;
-            console.log(`${pet.name} has died of starvation! Game over.`)
+            $('.message').append('<p>' + `${pet.name} has died of starvation! Game over.` + '</p>');
             clearInterval(timer);
             return;
         }
         else if (pet.sleepiness === 10){
             pet.alive = false;
-            console.log(`${pet.name} has died of fatigue! Game over.`)
+            $('.message').append('<p>' + `${pet.name} has died of fatigue! Game over.` + '</p>')
             clearInterval(timer);
             return;
         } 
        else if (pet.boredom === 10){
             pet.alive = false;
-            console.log(`${pet.name} has died of boredom! Game over.`)
+            $('.message').append('<p>' +`${pet.name} has died of boredom! Game over.` + '</p>')
             clearInterval(timer);
             return;
         }
        else if (seconds === 60 && pet.alive === true){
-            console.log(`${pet.name} has evolved!!!`)
+        $('.message').append('<p>' + `${pet.name} has evolved!!!` + '</p>')
         }
        else if(seconds > 120){
             clearInterval(timer);
-            console.log(`${pet.name} lived a long happy life before dying of natural causes!
-             Congrats, you are truly a champion Tomagotchi caretaker. Game over.`);
+            $('.message').append('<p>' +`${pet.name} lived a long happy life before dying of natural causes!
+            Congrats, you are truly a champion Tomagotchi caretaker. Game over.` + '</p>');
             return;
         }
         console.log(`${seconds} seconds have passed`)
