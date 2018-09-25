@@ -1,4 +1,6 @@
 
+const game = {};
+
 let seconds = 0;
 let timer;
 let pet;
@@ -66,7 +68,7 @@ const createScoreboard = () => {
 const startTimer = () => {
     timer = setInterval(() => {
         seconds++;
-        if (seconds % 5 === 0){
+        if (seconds % 10 === 0){
             pet.age++;
             $('.ageScore').text(pet.age);
             console.log(pet.age);
@@ -76,12 +78,12 @@ const startTimer = () => {
             $('.appetiteScore').text(pet.hunger);
             console.log(pet.hunger)
         }
-        if (seconds % 3 === 0){
+        if (seconds % 4 === 0){
             pet.boredom++;
             $('.attentionScore').text(pet.boredom);
             console.log(pet.boredom)
         }
-        if (seconds % 3 === 0){
+        if (seconds % 5 === 0){
             pet.sleepiness++;
             $('.tirednessScore').text(pet.sleepiness);
             console.log(pet.sleepiness)
@@ -104,13 +106,13 @@ const startTimer = () => {
             clearInterval(timer);
             return;
         }
-       else if (seconds === 30 && pet.alive === true){
+       else if (seconds === 60 && pet.alive === true){
             console.log(`${pet.name} has evolved!!!`)
         }
-       else if(seconds > 60){
+       else if(seconds > 120){
             clearInterval(timer);
             console.log(`${pet.name} lived a long happy life before dying of natural causes!
-             Congrats, you're a Tomagotchi champion. Game over.`);
+             Congrats, you are truly a champion Tomagotchi caretaker. Game over.`);
             return;
         }
         console.log(`${seconds} seconds have passed`)
@@ -125,26 +127,31 @@ $('.start').on('click', startTimer);
 $('.start').on('click', createScoreboard);
 
 $(document).on('click', '.feed', function(){
+    if (pet.hunger > 0){
     pet.hunger--;
     $('.appetiteScore').text(pet.hunger);
     console.log(pet.hunger);
+    }
 });
 
 $(document).on('click', '.play', function(){
+    if (pet.boredom > 0){
     pet.boredom--;
     $('.attentionScore').text(pet.boredom);
     console.log(pet.boredom);
+    }
 });
 
 $(document).on('click', '.sleep', function(){
+    if (pet.sleepiness > 0){
     pet.sleepiness--;
     $('.tirednessnScore').text(pet.sleepiness);
     console.log(pet.sleepiness);
+    }
 });
 
-
 //Remaining objectives
-    // reset game if tomagotchi dies
+    // display messages on screen
     // animate tomagotchi
 
 // Extras
