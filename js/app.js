@@ -37,7 +37,9 @@ const generateButtons = () => {
     const $button1 = $('<button/>');
     const $button2 = $('<button/>');
     const $button3 = $('<button/>');
+
     $('body').append($div);
+
     $div.append($button1);
     $button1.text('feed your pet');
     $div.append($button2);
@@ -46,12 +48,13 @@ const generateButtons = () => {
     $button3.text('turn off the lights')
 }
 
-const scoreboard = () => {
+const createScoreboard = () => {
     const $aside = $('<aside/>');
-    const $div1 = $('<div/>').addClass('score');
-    const $div2 = $('<div/>').addClass('score');
-    const $div3 = $('<div/>').addClass('score');
-    const $div4 = $('<div/>').addClass('score');
+    const $div1 = $('<div id = ageScore/>').addClass('score');
+    const $div2 = $('<div id = appetiteScore/>').addClass('score');
+    const $div3 = $('<div id = attentionScore/>').addClass('score');
+    const $div4 = $('<div id = tirednessScore/>').addClass('score');
+
     const $aging = pet.age;
     const $hungerScore = pet.hunger;
     const $boredomScore = pet.boredom;
@@ -61,11 +64,11 @@ const scoreboard = () => {
     $('aside').append($div1);
     $div1.append($aging);
     $('aside').append($div2);
-    $div1.append($hungerScore);
+    $div2.append($hungerScore);
     $('aside').append($div3);
-    $div1.append($boredomScore);
+    $div3.append($boredomScore);
     $('aside').append($div4);
-    $div1.append($fatigueScore);
+    $div4.append($fatigueScore);
 }
 
 const startTimer = () => {
@@ -73,18 +76,22 @@ const startTimer = () => {
         seconds++;
         if (seconds % 5 === 0){
             pet.age++;
-            console.log(pet.age)
+            $('#ageScore').append(pet.age);
+            console.log(pet.age);
         }
         if (seconds % 5 === 0){
             pet.hunger++;
+            $('#appetiteScore').append(pet.hunger);
             console.log(pet.hunger)
         }
         if (seconds % 5 === 0){
             pet.boredom++;
+            $('#attentionScore').append(pet.boredom);
             console.log(pet.boredom)
         }
         if (seconds % 5 === 0){
             pet.sleepiness++;
+            $('#tirednessScore').append(pet.sleepiness);
             console.log(pet.sleepiness)
         }
         if(seconds > 30){
@@ -97,11 +104,12 @@ const startTimer = () => {
 }
 
 
+
 $('#start').on('click', startGame);
 $('#start').on('click', showTomagotchi);
 $('#start').on('click', generateButtons);
 $('#start').on('click', startTimer);
-$('#start').on('click', scoreboard);
+$('#start').on('click', createScoreboard);
 
 
 
