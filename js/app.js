@@ -12,7 +12,8 @@ class Tomagotchi {
         this.sleepiness = 0;
         this.boredom = 0;
         this.name = name;
-        this.eyeColor = eyeColor
+        this.eyeColor = eyeColor;
+        this.alive = true;
     }
     greet (){
         console.log('Hi Person!')
@@ -62,45 +63,53 @@ const createScoreboard = () => {
 const startTimer = () => {
     timer = setInterval(() => {
         seconds++;
-        if (seconds % 5 === 0){
+        if (seconds % 3 === 0){
             pet.age++;
             $('.ageScore').text(pet.age);
             console.log(pet.age);
         }
-        if (seconds % 5 === 0){
+        if (seconds % 3 === 0){
             pet.hunger++;
             $('.appetiteScore').text(pet.hunger);
             console.log(pet.hunger)
         }
-        if (seconds % 5 === 0){
+        if (seconds % 3 === 0){
             pet.boredom++;
             $('.attentionScore').text(pet.boredom);
             console.log(pet.boredom)
         }
-        if (seconds % 5 === 0){
+        if (seconds % 3 === 0){
             pet.sleepiness++;
             $('.tirednessScore').text(pet.sleepiness);
             console.log(pet.sleepiness)
         }
-        if(seconds > 50){
+        if (pet.hunger === 10){
+            pet.alive === false;
+            console.log(`${pet.name} has died of starvation! Game over.`)
+        }
+        if (pet.sleepiness === 10){
+            pet.alive === false;
+            console.log(`${pet.name} has died of fatigue! Game over.`)
+        }
+        if (pet.boredom === 10){
+            pet.alive === false;
+            console.log(`${pet.name} has died of boredom! Game over.`)
+        }
+        if(seconds > 30){
             clearInterval(timer);
             console.log("Done!");
             return;
         }
+        
         console.log("Time is passing")
     }, 1000)
 }
 
-// const feedTomagotchi = () => {
-  
-// }
-
-// const playWithTomagotchi = () => {
-//     pet.boredom--;
-// }
-
-// const sleepTomagotchi = () => {
-//     pet.sleepiness--;
+// const deathTimer = () => {
+//     if (pet.hunger === 10){
+//         pet.alive === false;
+//         console.log(`${pet.name} has died! Game over.`)
+//     }
 // }
 
 $('.start').on('click', startGame);
@@ -108,6 +117,7 @@ $('.start').on('click', showTomagotchi);
 $('.start').on('click', generateButtons);
 $('.start').on('click', startTimer);
 $('.start').on('click', createScoreboard);
+
 
 $(document).on('click', '.feed', function(){
     pet.hunger--;
