@@ -37,6 +37,7 @@ const showTomagotchi = () => {
     const $section = $('<section/>').addClass('gameImage');
     $('body').append($section);
     $section.append('<img src = "images/Agum.png">')
+    $('.scoreboard').css({display: 'inline-block'})
 }
 
 const generateButtons = () => {
@@ -48,11 +49,11 @@ const generateButtons = () => {
     $('body').append($div);
 
     $div.append($button1);
-    $button1.text('feed your pet');
+    $button1.text('Feed Your Pet');
     $div.append($button2);
-    $button2.text('play with your pet');
+    $button2.text('Play With Your Pet');
     $div.append($button3);
-    $button3.text('turn off the lights')
+    $button3.text('Turn Off the Lights')
 }
 
 const createScoreboard = () => {
@@ -60,10 +61,10 @@ const createScoreboard = () => {
     const $hungerScore = pet.hunger;
     const $boredomScore = pet.boredom;
     const $fatigueScore = pet.sleepiness;
-    $('.ageScore').append('Age: ' + $aging);
-    $('.appetiteScore').append('Appetite: ' + $hungerScore);
-    $('.attentionScore').append('Focus: ' + $boredomScore);
-    $('.tirednessScore').append('Fatigue: ' + $fatigueScore);
+    $('.ageScore').append($aging);
+    $('.appetiteScore').append($hungerScore);
+    $('.attentionScore').append($boredomScore);
+    $('.tirednessScore').append($fatigueScore);
 }
 
 const startTimer = () => {
@@ -71,48 +72,48 @@ const startTimer = () => {
         seconds++;
         if (seconds % 10 === 0){
             pet.age++;
-            $('.ageScore').text('Age: ' + pet.age);
+            $('.ageScore').text(pet.age);
             console.log(pet.age);
         }
         if (seconds % 3 === 0){
             pet.hunger++;
-            $('.appetiteScore').text('Appetite: ' + pet.hunger);
+            $('.appetiteScore').text(pet.hunger);
             console.log(pet.hunger)
         }
         if (seconds % 4 === 0){
             pet.boredom++;
-            $('.attentionScore').text('Focus: ' + pet.boredom);
+            $('.attentionScore').text(pet.boredom);
             console.log(pet.boredom)
         }
         if (seconds % 5 === 0){
             pet.sleepiness++;
-            $('.tirednessScore').text('Fatigue: ' + pet.sleepiness);
+            $('.tirednessScore').text(pet.sleepiness);
             console.log(pet.sleepiness)
         }
         if (pet.hunger === 10){
             pet.alive = false;
-            $('.message').append('<p>' + `${pet.name} has died of starvation! Game over.` + '</p>');
+            $('.message').append('<p class = status>' + `${pet.name} has died of starvation! Game over.` + '</p>');
             clearInterval(timer);
             return;
         }
         else if (pet.sleepiness === 10){
             pet.alive = false;
-            $('.message').append('<p>' + `${pet.name} has died of fatigue! Game over.` + '</p>')
+            $('.message').append('<p class = status>' + `${pet.name} has died of fatigue! Game over.` + '</p>')
             clearInterval(timer);
             return;
         } 
        else if (pet.boredom === 10){
             pet.alive = false;
-            $('.message').append('<p>' +`${pet.name} has died of boredom! Game over.` + '</p>')
+            $('.message').append('<p class = status>' +`${pet.name} has died of boredom! Game over.` + '</p>')
             clearInterval(timer);
             return;
         }
        else if (seconds === 60 && pet.alive === true){
-        $('.message').append('<p>' + `${pet.name} has evolved!!!` + '</p>')
+        $('.message').append('<p class = status>' + `${pet.name} has evolved!!!` + '</p>')
         }
        else if(seconds > 120){
             clearInterval(timer);
-            $('.message').append('<p>' +`${pet.name} lived a long happy life before dying of natural causes!
+            $('.message').append('<p class = status>' +`${pet.name} lived a long happy life before dying of natural causes!
             Congrats, you are truly a champion Tomagotchi caretaker. Game over.` + '</p>');
             return;
         }

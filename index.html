@@ -8,6 +8,8 @@
 
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Abril+Fatface|Arvo|Chicle|Glegoo" rel="stylesheet">
+    <script src = "https://cdnjs.cloudflare.com/ajax/libs/velocity/1.5.1/velocity.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
     <link rel="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
@@ -18,12 +20,14 @@
         <h2 class = name></h2>
     <button class = start>Start Game</button>
 
-    <aside>   
-        <div class = ageScore></div>
-        <div class = appetiteScore></div>
-        <div class = attentionScore></div>
-        <div class = tirednessScore></div>
-    </aside>    
+    <div class = scoreboardContainer>
+        <div class = scoreboard>   
+                <span>Age:<p class = ageScore></p></span>
+                <span>Appetite:<p class = appetiteScore></p></span>
+                <span>Focus:<p class = attentionScore></p></span>
+                <span>Fatigue:<p class = tirednessScore></p></span>
+        </div>    
+    </div>  
 
     <div class = message></div>
 
