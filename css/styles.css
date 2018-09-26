@@ -7,6 +7,10 @@
     justify-content: left;
 }
 
+section {
+    background-image: url("images/3259a506890725f.jpg");
+    background-position: 75% 75%;
+}
 h1 {
     font-family: 'Abril Fatface', cursive;
     text-align: center;
@@ -24,6 +28,9 @@ section {
   justify-content: center;
 }
 
+.tomagotchi {
+    margin-right: 500px;
+} 
 
 .name {
     font-family: 'Glegoo', serif;
@@ -57,8 +64,6 @@ section {
     font-family: 'Arvo', serif;
     text-align: left;
 }
-
-
 .start{
     font-family: 'Abril Fatface', cursive;
     display: block;
@@ -79,8 +84,6 @@ section {
     margin: 10px;
     padding: 10px;
 }
-
-
 .message {
     text-align: center;
 }
@@ -89,9 +92,6 @@ section {
 }
 
 /* 
-
-
-
 
 .gameImage {}
 */
