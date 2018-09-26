@@ -38,7 +38,8 @@ const showTomagotchi = () => {
     const $section = $('<section/>').addClass('gameBackground');
     $('body').append($section);
     $section.append('<img class = "tomagotchi" src = "css/images/Agum.png">');
-    $('.tomagotchi').velocity('transition.swoopIn', {duration:2000})
+    $('.tomagotchi').velocity('transition.swoopIn', {duration:2500})
+    moveLeft();
 }
 
 const generateButtons = () => {
@@ -69,12 +70,12 @@ const createScoreboard = () => {
     $('.tirednessScore').append($fatigueScore);
 }
 
-//  const tomagotchiDies = () => {
-//             $('.tomagotchi').velocity()
-// }
+ const death = () => {
+            $('.tomagotchi').velocity('transition.perspectiveUpOut', {duration:2500})
+}
 
 const moveRight = () => {
-    $('.tomagotchi').velocity({"translateX": "500px"}, 1500, ()=> {
+    $('.tomagotchi').velocity({"translateX": "700px"}, 1500, ()=> {
         if (pet.alive){
             moveLeft();
         }
@@ -82,7 +83,7 @@ const moveRight = () => {
 }
 
 const moveLeft = () => {
-    $('.tomagotchi').velocity({"translateX": "-500px"}, 1500, ()=> {
+    $('.tomagotchi').velocity({"translateX": "-350px"}, 1500, ()=> {
         if (pet.alive){
             moveRight();
         }
@@ -116,21 +117,21 @@ const startTimer = () => {
             pet.alive = false;
             $('.message').append('<p class = status>' + `${pet.name} has died of starvation! Game over.` + '</p>');
             clearInterval(timer);
-            gameReset();
+            death();
             return;
         }
         else if (pet.sleepiness === 10){
             pet.alive = false;
             $('.message').append('<p class = status>' + `${pet.name} has died of fatigue! Game over.` + '</p>')
             clearInterval(timer);
-            gameReset();
+            death();
             return;
         } 
        else if (pet.boredom === 10){
             pet.alive = false;
             $('.message').append('<p class = status>' +`${pet.name} has died of boredom! Game over.` + '</p>')
             clearInterval(timer);
-            gameReset();
+            death();
             return;
         }
        else if (seconds === 60 && pet.alive === true){
@@ -152,7 +153,7 @@ $('.start').on('click', showTomagotchi);
 $('.start').on('click', generateButtons);
 $('.start').on('click', startTimer);
 $('.start').on('click', createScoreboard);
-$('.start').on('click', moveLeft);
+// $('.start').on('click', moveLeft);
 
 $(document).on('click', '.feed', function(){
     if (pet.hunger > 0){
@@ -179,7 +180,6 @@ $(document).on('click', '.sleep', function(){
 });
 
 //Remaining objectives
-    // animate tomagotchi (function called on game start)
     // evolve tomagotchi
 
 // Extras
