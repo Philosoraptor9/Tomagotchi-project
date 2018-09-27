@@ -70,8 +70,12 @@ const createScoreboard = () => {
     $('.tirednessScore').append($fatigueScore);
 }
 
+const evolve = () => {
+    $('.tomagotchi').attr('src','css/images/MCkPgOj.png')
+}
+
  const death = () => {
-            $('.tomagotchi').velocity('transition.perspectiveUpOut', {duration:2500})
+    $('.tomagotchi').velocity('transition.perspectiveUpOut', {duration:2500})
 }
 
 const moveRight = () => {
@@ -136,6 +140,7 @@ const startTimer = () => {
         }
        else if (seconds === 60 && pet.alive === true){
         $('.message').append('<p class = status>' + `${pet.name} has evolved!!!` + '</p>')
+        evolve();
         }
        else if(seconds > 120){
             clearInterval(timer);
@@ -153,7 +158,6 @@ $('.start').on('click', showTomagotchi);
 $('.start').on('click', generateButtons);
 $('.start').on('click', startTimer);
 $('.start').on('click', createScoreboard);
-// $('.start').on('click', moveLeft);
 
 $(document).on('click', '.feed', function(){
     if (pet.hunger > 0){
@@ -179,8 +183,6 @@ $(document).on('click', '.sleep', function(){
     }
 });
 
-//Remaining objectives
-    // evolve tomagotchi
 
 // Extras
 
