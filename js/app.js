@@ -79,7 +79,7 @@ const evolve = () => {
     $('.tomagotchi').velocity('transition.perspectiveUpOut', {duration:2500});
     setTimeout (function(){
         gameReset()
-         }, 4000);
+         }, 4500);
 }
 
 const moveRight = () => {
