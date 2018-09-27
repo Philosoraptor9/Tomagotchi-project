@@ -4,9 +4,12 @@
 .scoreboardContainer{
     align-items: center;
     justify-content: left;
+    background-color: #d46ce8;
+    border: 2px solid;
 }
 body{
-    background-color: #16ff8e;
+    background: linear-gradient(#16ff8e, #65acff);
+    margin: 1px;
 }
 section {
     background-image: url("images/3259a506890725f.jpg");
@@ -19,6 +22,7 @@ h1 {
 span {
     font-family: 'Chicle';
     text-align: left;
+    text-decoration: underline;
 }
 div {
     text-align: center;
@@ -28,7 +32,11 @@ section {
   align-items: center;
   justify-content: center;
 }
-
+button {
+    border: 2px solid;
+    padding: 2px;
+    margin: 2px;
+}
 .tomagotchi {
     margin-right: 500px;
 } 
