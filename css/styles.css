@@ -2,11 +2,12 @@
     display: none;
 }
 .scoreboardContainer{
-    display: flex;
     align-items: center;
     justify-content: left;
 }
-
+body{
+    background-color: #16ff8e;
+}
 section {
     background-image: url("images/3259a506890725f.jpg");
     background-position: 75% 75%;
@@ -17,7 +18,7 @@ h1 {
 }
 span {
     font-family: 'Chicle';
-    text-align: center;
+    text-align: left;
 }
 div {
     text-align: center;

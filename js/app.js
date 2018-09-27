@@ -71,23 +71,28 @@ const createScoreboard = () => {
 }
 
 const evolve = () => {
-    $('.tomagotchi').attr('src','css/images/MCkPgOj.png')
+    $('.tomagotchi').attr('src','css/images/MCkPgOj.png');
+    pet.age = 0;
 }
 
  const death = () => {
-    $('.tomagotchi').velocity('transition.perspectiveUpOut', {duration:2500})
+    $('.tomagotchi').velocity('transition.perspectiveUpOut', {duration:2500});
+    setTimeout (function(){
+        gameReset()
+         }, 4000);
 }
 
 const moveRight = () => {
-    $('.tomagotchi').velocity({"translateX": "700px"}, 1500, ()=> {
+    $('.tomagotchi').velocity({"translateX": "700px"}, 1500,
+    $('.tomagotchi').velocity({ "rotateY": "+=180deg"}, 500, () => {
         if (pet.alive){
             moveLeft();
         }
-    })
+    }))
 }
 
 const moveLeft = () => {
-    $('.tomagotchi').velocity({"translateX": "-350px"}, 1500, ()=> {
+    $('.tomagotchi').velocity({"translateX": "-350px", "rotateY": "-=180deg"}, 1500, ()=> {
         if (pet.alive){
             moveRight();
         }
